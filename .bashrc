@@ -77,7 +77,7 @@ esac
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
     eval "`dircolors -b`"
-    alias ls='ls --color=auto'
+    alias ls='ls --color=auto --file-type'
     #alias dir='dir --color=auto'
     #alias vdir='vdir --color=auto'
 
@@ -110,5 +110,40 @@ export PATH=$PATH:~/opt/clojure-contrib/launchers/bash
 export PATH=$PATH:~/.clojure/clojure-contrib
 
 alias clj=clj-env-dir
+
+# extract various types of archive files
+function extract {
+    if [[ -z $1 ]]; then
+        echo 'Usage: extract ARCHIVE'
+        echo 'Extract files from ARCHIVE to the current directory'
+    elif [[ -r $1 ]]; then
+        case $1 in
+            *.rar) unrar x $1 ;;
+            *.tar) tar -xvf $1 ;;
+            *.tar.bz2) tar -xjvf $1 ;;
+            *.bz2) bzip2 -d $1 ;;
+            *.tar.gz) tar -xzvf $1 ;;
+            *.gz) gunzip -d $1 ;;
+            *.tgz) tar -xzvf $1 ;;
+            *.Z) uncompress $1 ;;
+            *.zip) unzip $1 ;;
+
+            *) echo "ERROR: '$1' is not a known archive type" ;;
+        esac
+    else
+        echo "ERROR: '$1' is not a valid file"
+    fi
+}
+
+function bash_prompt {
+    local DEFAULT="\[\033[0m\]"
+    local LIGHT_BLUE="\[\033[1;34m\]"
+    local LIGHT_CYAN="\[\033[1;36m\]"
+    local LIGHT_RED="\[\033[1;31m\]"
+    local WHITE="\[\033[1;37m\]"
+
+    PS1="$LIGHT_BLUE[$DEFAULT\u@\h $WHITE\W$LIGHT_BLUE]$LIGHT_CYAN \$ $DEFAULT"
+}
+bash_prompt
 
 
