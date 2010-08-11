@@ -1,0 +1,49 @@
+# Run the system-wide support stuff
+. $GLOBALAUTOSTART
+
+# Programs to launch at startup
+.HOME/.fehbg &
+feh --bg-scale ~/Pictures/Orbe_n__Wood___WP-1024x768.jpg
+#.HOME/wallpaper.sh &
+xcompmgr -cCfF -t-5 -l-5 -r4.2 -o.55 -D4 &
+
+# SCIM support (for typing non-english characters)
+#export LC_CTYPE=ja_JP.utf8
+export XMODIFIERS=@im=SCIM
+export GTK_IM_MODULE=scim
+export QT_IM_MODULE=scim
+scim -d &
+
+# Disable Nautilus desktop.
+gconftool-2 -s -t bool /apps/nautilus/preferences/show_desktop false &
+# Do not let Nautilus set the background image.
+gconftool-2 -s -t bool /desktop/gnome/background/draw_background false &
+
+# Make Nautilus use spatial mode, should start-up quicker.
+gconftool-2 -s -t bool /apps/nautilus/preferences/always_use_browser true &
+# Make Nautilus show the advanced permissions dialog
+gconftool-2 -s -t bool /apps/nautilus/preferences/show_advanced_permissions true &
+
+
+# Launch panel
+(sleep 2s && tint2) &
+
+#Conky
+(sleep 2s && conky -bo) &
+
+gnome-settings-daemon &
+gnome-volume-manager &
+#guake &
+nm-applet --sm-disable &
+gnome-volume-control-applet &
+transmission &
+pidgin &
+
+nautilus ~/CASE4 &
+#./wallpaper.sh &
+#Run
+#(sleep 2s && gmrun) &
+# Launch system tray
+#(sleep 2s && trayer --expand true --transparent true  --alpha 255 --edge bottom --align right --expand true --SetDockType true --widthtype request --margin 130) &
+
+

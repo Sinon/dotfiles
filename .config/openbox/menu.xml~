@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<openbox_menu xmlns="http://openbox.org/"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://openbox.org/
+                file:///usr/share/openbox/menu.xsd">
+
+<menu id="root-menu" label="Openbox 3">
+  <item label="Run Program">
+    <action name="Execute"><execute>gmrun</execute></action>
+  </item>
+  <separator />
+  <item label="Terminal">
+    <action name="Execute"><execute>x-terminal-emulator --geometry 1200x900</execute></action>
+  </item>
+  <item label="SwiftFox">
+    <action name="Execute"><execute>x-www-browser</execute></action>
+  </item>
+  <item label="Chromium">
+    <action name="Execute"><execute>chromium-browser</execute></action>
+  </item>
+  <item label="File Manager">
+    <action name="Execute"><execute>nautilus</execute></action>
+  </item>
+  <item label="File Manager (root)">
+    <action name="Execute"><execute>gksudo nautilus</execute></action>
+  </item>
+  <item label="Text Editor">
+    <action name="Execute"><execute>gedit</execute></action>
+  </item>
+  <item label="Media Player">
+    <action name="Execute"><execute>banshee</execute></action>
+  </item>
+  <item label="Torrent Client">
+    <action name="Execute"><execute>transmission</execute></action>
+  </item>
+  <item label="Vim">
+    <action name="Execute"><execute>x-terminal-emulator --geometry 1200x900 -e vim</execute></action>
+  </item>
+  <item label="GVim">
+    <action name="Execute"><execute>gvim</execute></action>
+  </item>
+  <separator />
+  <!-- This requires the presence of the 'menu' package to work
+  <menu id="Debian" />-->
+  <menu execute="myxcompmgr" id="CompositingPipeMenu" label="Compositing"/>
+  <separator />
+  <menu execute="/bin/bop_gmenu.py" id="GMenu" label="Applications"/>
+  <menu execute="/bin/bop_gbook.py" id="Book" label="Places"/>
+<!-->  <menu execute="/bin/bop_gserver.py" id="Server" label="Server"/>-->
+  <menu execute="/bin/bop_grecent.py" id="Recent" label="Recent Files"/>
+  <separator />
+  <menu execute="/bin/mounts.py" id="Mounted" label="Mounted Directories"/>
+  <separator />
+<!-->  <menu id="client-list-menu" />
+  <separator /> -->
+  <item label="Configure OpenBox">
+    <action name="Execute"><execute>obconf</execute></action>
+  </item>
+  <item label="Edit OpenBox Settings">
+      <action name="Execute"><execute>vim -p /home/rob/.config/openbox/rc.xml /home/rob/.config/openbox/menu.xml /home/rob/.config/openbox/autostart.sh /home/rob/.conkyrc /home/rob/.config/tint2/tint2rc /home/rob/.vimrc /home/rob/.gvimrc</execute></action>
+  </item>
+  <item label="ReLoad OpenBox">
+    <action name="Reconfigure" />
+  </item>
+  <item label="Restart OpenBox">
+    <action name="Restart" />
+  </item>
+  <separator />
+  <item label="Log Out">
+    <action name="Exit" />
+  </item>
+</menu>
+
+</openbox_menu>
