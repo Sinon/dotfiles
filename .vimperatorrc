@@ -1,0 +1,18 @@
+"2.2 (created: 2009/10/28 19:04:27)
+
+set activate=
+set guioptions=n
+set maxitems=15
+set runtimepath=/home/rob/.vimperator
+source! /home/rob/.vimperatorrc.local
+set defsearch=g
+
+" vim: set ft=vimperator:
+
+" Source noscript plugin
+source ~/.vimperator/plugin/noscript.js
+nnoremap ,n :noscript popup<CR>
+
+map <C-j> <Nop>
+map <C-k> <Nop>
+map <C-x> <Nop>
