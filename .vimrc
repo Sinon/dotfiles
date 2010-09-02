@@ -1,3 +1,11 @@
+" Setup Bundle Support {
+" The next two lines ensure that the ~/.vim/bundle/ system works
+	runtime! autoload/pathogen.vim
+	silent! call pathogen#runtime_append_all_bundles()
+" }
+
+
+
 " wrap like other editors
 set wrap                " word wrap
 set textwidth=0         " 
@@ -22,7 +30,7 @@ set incsearch           " increment search
 set ignorecase          " case-insensitive search
 set smartcase           " upper-case sensitive search
 
-set scrolloff=2
+set scrolloff=5
 
 "Vim UI Settings
 set cursorcolumn "highlight the current column
@@ -49,14 +57,7 @@ if !has('gui_running')
 end
 if has('gui_running')
     set showtabline=1
-    set guioptions=ce
-    "set guioptions-=m
-    "set guioptions-=T
-    "set guioptions-=l
-    "set guioptions-=L
-    "set guioptions-=r
-    "set guioptions-=R
-    "set guioptions+=e
+    set guioptions=cem
     set noantialias
     set background=dark
     colorscheme wombat
@@ -85,8 +86,6 @@ if has('statusline')
 end
 
 " plug-in settings
-filetype off
-call pathogen#runtime_append_all_bundles()
 filetype plugin indent on
 autocmd Filetype tex,latex :set grepprg=grep\ -nH\ $*
 autocmd Filetype tex,latex :set dictionary=~/.vim/dict/latex.dict
@@ -95,6 +94,7 @@ set iskeyword+=:
 autocmd FileType python set complete+=k~/.vim/syntax/python.vim isk+=.,(
 autocmd FileType python set omnifunc=pythoncomplete#Complete
 autocmd FileType python compiler pylint
+"autocmd FileType python source ~/.vim/ftplugin/python/python.vim
 autocmd Filetype java set tags=~/.tags
 
 
@@ -153,20 +153,8 @@ let Tlist_WinWidth=28
 let Tlist_Exit_OnlyWindow=1
 let Tlist_File_Fold_Auto_Close = 1
 
-" ---------------------------------------------------------------------------
-" configuration for fuzzyfinder
-" find in buffer is ,b
-"nmap <LocalLeader>b :FuzzyFinderBuffer<CR>
-" find in file is ,F
-"nmap <LocalLeader>f :FuzzyFinderFile<CR>
-" find in tag is ,t
-"nmap <LocalLeader>t :FuzzyFinderTag<CR>
-
-" ---------------------------------------------------------------------------
-
 " spelling...
 if v:version >= 700
- 
       setlocal spell spelllang=en
       nmap <LocalLeader>ss :set spell!<CR>
  
@@ -175,6 +163,13 @@ endif
 highlight OverLength ctermbg=red ctermfg=white guibg=#592929
 match OverLength /\%81v.*/
 
+set colorcolumn=80
+
 "Python.vim config
 let python_highlight_all = 1
 let python_slow_syc = 1
+
+"set lcs=tab:^,trail:-,extends:>,precedes:<,nbsp:%
+
+
+let g:SuperTabDefaultCompletionType = "<c-x><c-u>"
