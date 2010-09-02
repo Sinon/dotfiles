@@ -19,3 +19,9 @@
 [submodule "bundle/delimitMate"]
 	path = bundle/delimitMate
 	url = http://github.com/Raimondi/delimitMate.git
+[submodule "bundle/neocomplcache"]
+	path = bundle/neocomplcache
+	url = http://github.com/Shougo/neocomplcache.git
+[submodule "bundle/supertab"]
+	path = bundle/supertab
+	url = http://github.com/ervandew/supertab.git
